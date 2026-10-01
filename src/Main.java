@@ -32,18 +32,31 @@ public class Main {
         String answer = scanner.nextLine();
 
         System.out.println("Ваш ответ:\t" + answer);
-        if (answer.equals("ДА")) {
-            System.out.println("Начинаем играть");
-            System.out.println("Введите куда будет ходить персонаж (Ход возможен только по вертикали и горизонтали на одну клетку)");
-            System.out.println("Координаты персонажа - (x: " + personX + ", y: " + personY + ")");
-            int x = scanner.nextInt();
-            int y = scanner.nextInt();
+        switch (answer) {
+            case "ДА" :
+                // System.out.println("Начинаем играть");
+                System.out.println("Введите куда будет ходить персонаж (Ход возможен только по вертикали и горизонтали на одну клетку)");
+                System.out.println("Координаты персонажа - (x: " + personX + ", y: " + personY + ")");
+                int x = scanner.nextInt();
+                int y = scanner.nextInt();
 
-        } else if (answer.equals("НЕТ")) {
-            System.out.println("Почему ты не захотел со мной играть :(");
-            System.out.println("Приходи ещё!");
-        } else {
-            System.out.println("ERROR");
+                if (x != personX && y != personY) {
+                    System.out.println("Некорректный ход");
+                } else if (Math.abs(x - personX) == 1 || Math.abs(y - personY) == 1) {
+                    personX = x;
+                    personY = y;
+                    step += 1;
+                    System.out.println("Ход корректный; Новые координаты: " +
+                            personX + ", " + personY + "\nХод номер: " + step);
+                } else {
+                    System.out.println("Координаты не изменены");
+                }
+            break;
+            case "НЕТ" :
+                System.out.println("Жаль приходи ещё");
+                break;
+            default:
+                System.out.println("Данные введены некорректно");
         }
     }
 }
