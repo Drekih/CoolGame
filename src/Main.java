@@ -1,16 +1,23 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         String person = "\uD83E\uDDD9";
         String monster = "\uD83E\uDDDF";
+        String castle = "\uD83C\uDFF0";
+        String leftBlock = " | ";
+        String rightBlock = " |";
+        String wall = " + —— + —— + —— + —— + —— + ";
 
         int personLive = 3;
         int sizeBoard = 5;
         int personX;
         int personY;
         int step = 0;
-
+        Random random = new Random();
+        int castleX = 1 + random.nextInt(sizeBoard);
+        int castleY = 1;
         personX = 1;
         personY = sizeBoard;
         // \n, \t - спец символ
@@ -35,6 +42,25 @@ public class Main {
         switch (answer) {
             case "ДА" :
                 // System.out.println("Начинаем играть");
+                for (int y = 1; y <= sizeBoard; y++){
+                    System.out.println(wall);
+
+                    for (int x = 1; x <= sizeBoard; x++) {
+                        System.out.print(leftBlock);
+
+                        if (personY == y && personX == x) {
+                            System.out.print(person);
+                        } else if (castleX == x && castleY == y) {
+                            System.out.print(castle);
+                        } else {
+                            System.out.print("  ");
+                        }
+                    }
+                    System.out.println(rightBlock);
+                }
+                System.out.println(wall);
+
+
                 System.out.println("Введите куда будет ходить персонаж (Ход возможен только по вертикали и горизонтали на одну клетку)");
                 System.out.println("Координаты персонажа - (x: " + personX + ", y: " + personY + ")");
                 int x = scanner.nextInt();
