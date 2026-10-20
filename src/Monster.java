@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Monster {
-    private String image = "\uD83E\uDDDF";
+    private String image = "\uD83E\uDDB9\u200D♂\uFE0F";
     private final int x, y;
 
     Monster(int sizeBoard) {
@@ -34,7 +34,7 @@ public class Monster {
     public boolean taskMonster(int difficultGame) {
         System.out.println("Решите задачу:");
 
-        if (difficultGame == 1) {
+        if (difficultGame == 1 || difficultGame == 2) {
             Random random = new Random();
             int a = random.nextInt(100);
             int b = random.nextInt(100);
@@ -52,7 +52,23 @@ public class Monster {
                 return false;
             }
         } else {
-            return false;
+            Random random = new Random();
+            int a = random.nextInt(500);
+            int b = random.nextInt(500);
+            int trueAnswer = a + b;
+
+            System.out.println("Реши пример: " + a + " + " + b + " = ?");
+            Scanner scanner = new Scanner(System.in);
+            int answer = scanner.nextInt();
+
+            if (trueAnswer == answer) {
+                System.out.println("Верно! Ты победил монстра");
+                return true;
+            } else {
+                System.out.println("Ты проиграл эту битву!");
+                return false;
+            }
+
         }
     }
 }

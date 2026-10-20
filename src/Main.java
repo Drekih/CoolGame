@@ -54,7 +54,7 @@ public class Main {
         System.out.println("Ваш ответ:\t" + answer);
 
         switch (answer) {
-            case "ДА":
+            case "ДА","Да","да","lf","LF","Lf","Y","y","Д","д","конечно","разумеется","","самособой" :
                 System.out.println("Выбери сложность игры (от 1 до 5):");
                 int difficultGame = scanner.nextInt();
                 System.out.println("Выбранная сложность:\t" + difficultGame);
@@ -112,7 +112,7 @@ public class Main {
                 }
                 break;
 
-            case "НЕТ":
+            case "НЕТ","нет","Нет","n","N","ytn","YTN","Ytn","н","Н","отказано","Не","не":
                 System.out.println("Жаль, приходи ещё!");
                 break;
 
