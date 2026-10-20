@@ -52,7 +52,6 @@ public class Monster {
                 return false;
             }
         } else {
-            // какой-то код
             return false;
         }
     }
