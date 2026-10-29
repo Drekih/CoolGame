@@ -4,6 +4,7 @@ public class Person {
     private int x, y;
     private String image = "\uD83E\uDDDD\u200D♂\uFE0F";
     private int live = 3;
+    private int cash = 0;
 
     Person(int sizeBoard) {
         Random random = new Random();
@@ -18,6 +19,14 @@ public class Person {
 
     Person() {
         this(1, 1);
+    }
+
+    public int getCash() {
+        return cash;
+    }
+
+    public void addCash(int money) {
+        cash = cash + money;
     }
 
     public int getX() {

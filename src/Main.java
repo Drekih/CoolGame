@@ -31,7 +31,11 @@ public class Main {
             if (random.nextBoolean()) {
                 monster = new Monster(sizeBoard);
             } else {
-                monster = new BigMonster(sizeBoard);
+                if (random.nextBoolean()) {
+                    monster = new BigMonster(sizeBoard);
+                } else {
+                    monster = new SpeedMonster(sizeBoard);
+                }
             }
 
             int row = monster.getY() - 1;
@@ -56,6 +60,7 @@ public class Main {
         switch (answer) {
             case "ДА","Да","да","lf","LF","Lf","Y","y","Д","д","конечно","разумеется","","самособой" :
                 System.out.println("Выбери сложность игры (от 1 до 5):");
+                System.out.println("Вам нужно набрать 130 монет");
                 int difficultGame = scanner.nextInt();
                 System.out.println("Выбранная сложность:\t" + difficultGame);
 
@@ -82,8 +87,12 @@ public class Main {
                                     + person.getX() + ", " + person.getY()
                                     + "\nХод номер: " + step);
                         } else if (board[y - 1][x - 1].equals(castle)) {
-                            System.out.println("Вы прошли игру!");
-                            break;
+                            if (person.getCash()>=130) {
+                                System.out.println("Вы прошли игру!");
+                                break;
+                            } else {
+                                System.out.println("У вас нет монет чтобы войти в замок. Убейте больше монстров.");
+                            }
                         } else {
                             for (Monster monster : monsters) {
                                 if (monster.conflictPerson(x, y)) {
@@ -91,6 +100,8 @@ public class Main {
                                         board[person.getY() - 1][person.getX() - 1] = "  ";
                                         person.move(x, y);
                                         step++;
+                                        person.addCash(monster.getMoney());
+                                        //monster.getMoney();
                                     } else {
                                         person.downLive();
                                     }

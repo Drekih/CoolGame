@@ -5,6 +5,7 @@ public class BigMonster extends Monster {
     BigMonster(int sizeBoard) {
         super(sizeBoard);
         setImage("\uD83E\uDDCC");
+        sentMoney(30);
     }
 
     @Override
@@ -27,7 +28,7 @@ public class BigMonster extends Monster {
             int answer = scanner.nextInt();
 
             if (trueAnswer == answer) {
-                System.out.println("Верно! Ты победил монстра");
+                System.out.println("Верно! Ты победил монстра и получил 30");
                 return true;
             } else {
                 System.out.println("Ты проиграл эту битву!");
